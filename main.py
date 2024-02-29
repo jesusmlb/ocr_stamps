@@ -59,33 +59,34 @@ with st.spinner('Wait for it... We are working very hard on your file...'):
     
         # Initialize data list for creating a DataFrame
         data = []
-    
-        # Iterate through grouped items and apply different regex patterns
         for year, items in grouped_items.items():
             for _ in items:
-                # Define regex patterns for different cases
                 pattern = r'(\d+) (\w+) (\d+ \|) (.*?)(?=\s*\d+\s+\d+) (\d+) (\d+)'
+                # let's add another pattern to check
                 pattern1 = r'(\d+) (\w+) ([\d.]+) (.*?) ([\d.]+) ([\d.]+)'
+                # let's add another pattern to check
                 pattern2 = r'(\d+) (\w+) (.*?) ([\d.]+) ([\d.]+)'
+                # let's add another pattern to check
                 pattern3 = r'(\d+) (\w+) ([\w.]+) (.*?)(?:(?:on (\d+))|([\d.]+)) ([\d.]+)'
+                # let's add another pattern to check
                 pattern4 = r'(\d+) (\w+) (\S+) (.*?) (\d+) (\d+)'
-    
-                # Apply regex patterns and append data to the list
+                notes = re.search(r'Perf\. (\d+)', year)
+        
                 if re.match(pattern, _, re.DOTALL):
-                    match = re.match(pattern, _, re.DOTALL)
-                    data.append([match.group(1), year[0:4], match.group(2), match.group(3), match.group(4), match.group(5), match.group(6), year[-9:-1]])
+                    match = re.match(pattern, _, re.DOTALL)    
+                    data.append([match.group(1), year[0:4], match.group(2), match.group(3), match.group(4), match.group(5), match.group(6), notes.group(0)])
                 elif re.match(pattern1, _, re.DOTALL):
                     match = re.match(pattern1, _, re.DOTALL)
-                    data.append([match.group(1), year[0:4], match.group(2), match.group(4), match.group(5), match.group(6), year[-14:-1]])
+                    data.append([match.group(1), year[0:4], match.group(2), match.group(4), match.group(5), match.group(6), notes.group(0)])
                 elif re.match(pattern4, _, re.DOTALL):
                     match = re.match(pattern4, _, re.DOTALL)
-                    data.append([match.group(1), year[0:4], match.group(2), match.group(3), match.group(4), match.group(5), match.group(6), year[-9:-1]])       
+                    data.append([match.group(1), year[0:4], match.group(2), match.group(3), match.group(4), match.group(5), match.group(6), notes.group(0)])       
                 elif re.match(pattern2, _, re.DOTALL):
                     match = re.match(pattern2, _, re.DOTALL)
-                    data.append([match.group(1), year[0:4], match.group(2), match.group(3), match.group(4), match.group(5), year[-9:-1]])
+                    data.append([match.group(1), year[0:4], match.group(2), match.group(3), match.group(4), match.group(5), notes.group(0)])
                 elif re.match(pattern3, _, re.DOTALL):
                     match = re.match(pattern3, _, re.DOTALL)
-                    data.append([match.group(1), year[0:4], match.group(2), match.group(3), match.group(4), match.group(5), year[-9:-1]])
+                    data.append([match.group(1), year[0:4], match.group(2), match.group(3), match.group(4), match.group(5), notes.group(0)])
                 else:
                     data.append([_, '', '', '', '', ''])        
     
