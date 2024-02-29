@@ -1,6 +1,6 @@
 import PIL.Image
 from PIL import Image
-from cv2 import cv2
+import cv2
 import easyocr as ocr
 import numpy as np
 import pandas as pd
@@ -15,7 +15,6 @@ if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     nparr = np.frombuffer(bytes_data, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_GRAYSCALE)
-    #img = cv2.imread(stringio, cv2.IMREAD_GRAYSCALE)
     reader = ocr.Reader(['en'])
     kernel = np.ones((7,7), np.uint8)
     blur = cv2.GaussianBlur(img,(5,5),0)
