@@ -6,6 +6,7 @@ import easyocr as ocr
 import numpy as np
 import pandas as pd
 import re
+from paddleocr import PaddleOCR, draw_ocr
 import streamlit as st
 from io import StringIO
 
