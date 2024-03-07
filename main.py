@@ -1,3 +1,8 @@
+import subprocess
+
+# Install PaddlePaddle
+subprocess.run(["pip", "install", "paddlepaddle", "-i", "https://pypi.tuna.tsinghua.edu.cn/simple"])
+
 # Import necessary libraries
 import PIL.Image
 from PIL import Image
