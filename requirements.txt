@@ -5,5 +5,5 @@ pip==24.0
 numpy==1.23.0
 pandas==1.4.3
 streamlit==1.28.2
-PaddlePaddle == 2.1.2
-subprocess.run == 0.0.8
+paddlepaddle==2.4.2
+paddleocr==2.6.1.3
