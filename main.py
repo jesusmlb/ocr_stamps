@@ -1,8 +1,3 @@
-#import subprocess
-
-# Install PaddlePaddle
-#subprocess.run(["pip", "install", "paddlepaddle", "-i", "https://pypi.tuna.tsinghua.edu.cn/simple"])
-
 # Import necessary libraries
 import PIL.Image
 from PIL import Image
@@ -11,7 +6,6 @@ import easyocr as ocr
 import numpy as np
 import pandas as pd
 import re
-from paddleocr import PaddleOCR, draw_ocr
 import streamlit as st
 from io import StringIO
 
